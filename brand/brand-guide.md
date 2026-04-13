@@ -56,12 +56,14 @@ In times that feel dark, that kind of shared exploration isn't just productive�
 
 The rocket metaphor works because it maps directly to our event:
 
-* **The rocket** = your idea, your project
-* **The booster** = the skills you build and the crew you assemble
-* **The crew =** the people who work together
-* **The moon** = the near-term stretch goal — ambitious but visible
+* **The rocket** = a project
+* **The booster** = a skill to learn
+* **The crew** = the ability to collaborate across teams and roles
+
+**Where we are going:**
+* **The Moon** = near-term stretch goal — ambitious but visible
 * **Mars** = the longer bet that requires real collaboration and new capabilities
-* \*\*The open frontier \*\*— "we don't know what we'll find yet"
+* **The Unknown** = we don't know what we'll find yet
 
 People self-select their level of ambition. Picking the moon is not less valuable than aiming for Mars. What matters is that you needed a boost to get there — a new skill, a new partnership, a bold experiment.
 
