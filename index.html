@@ -296,25 +296,71 @@
       transition: width 0.3s ease;
     }
     .tagline-hover:hover::after { width: 100%; }
+
+    /* ── Skip link ───────────────────────────── */
+    .skip-link {
+      position: absolute;
+      top: -48px;
+      left: 16px;
+      background: #E89C2E;
+      color: #29283E;
+      padding: 10px 20px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      z-index: 9999;
+      transition: top 0.2s ease;
+    }
+    .skip-link:focus { top: 8px; outline: 2px solid #29283E; outline-offset: 2px; }
+
+    /* ── Responsive ──────────────────────────── */
+    @media (max-width: 900px) {
+      .nav-links { display: none !important; }
+      .nav-cta { font-size: 0.8rem !important; padding: 8px 16px !important; }
+    }
+
+    @media (max-width: 768px) {
+      .mission-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
+      .cards-grid { grid-template-columns: 1fr !important; }
+      .footer-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
+      .manifesto-inner { padding-left: 28px !important; }
+      .manifesto-rule { display: none !important; }
+      .hero-content { padding: 120px 20px 80px !important; }
+      .section-inner { padding: 64px 20px !important; }
+      .metaphor-inner { padding: 64px 20px !important; }
+      .footer-inner { padding: 48px 20px 32px !important; }
+      .manifesto-wrap { padding: 64px 20px 64px 20px !important; }
+      .mission-pad { padding: 64px 20px !important; }
+    }
+
+    @media (max-width: 480px) {
+      .cards-grid > * { padding: 24px !important; }
+      #countdown { gap: 12px !important; }
+    }
   </style>
 </head>
 
 <body>
 
+<a href="#main-content" class="skip-link">Skip to content</a>
+
 <!-- ═══════════════════════════════════════════
   NAVIGATION
 ════════════════════════════════════════════ -->
 <header style="position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(41,40,62,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,156,46,0.15);">
-  <nav style="max-width:1280px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;">
-    <a href="#hero" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
+  <nav aria-label="Main navigation" style="max-width:1280px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;">
+    <a href="#hero" aria-label="Boost Days — return to top" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
       <img src="brand/logo.png" alt="Boost Days" style="height:40px;width:auto;" />
     </a>
-    <div style="display:flex;align-items:center;gap:32px;">
-      <a href="#manifesto" class="nav-link">Manifesto</a>
-      <a href="#mission" class="nav-link">Mission</a>
-      <a href="#metaphor" class="nav-link">The Launch</a>
-      <a href="#manifesto" class="btn-primary" style="padding:10px 24px;font-size:0.85rem;">May 20 →</a>
+    <div class="nav-links" style="display:flex;align-items:center;gap:32px;" role="list">
+      <a href="#manifesto" class="nav-link" role="listitem">Manifesto</a>
+      <a href="#mission" class="nav-link" role="listitem">Mission</a>
+      <a href="#metaphor" class="nav-link" role="listitem">The Launch</a>
     </div>
+    <a href="#manifesto" class="btn-primary nav-cta" style="padding:10px 24px;font-size:0.85rem;">May 20 →</a>
   </nav>
 </header>
 
@@ -322,19 +368,19 @@
 <!-- ═══════════════════════════════════════════
   HERO
 ════════════════════════════════════════════ -->
-<section id="hero" class="grain stars" style="position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;">
+<section id="hero" aria-label="Hero" class="grain stars" style="position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;">
 
   <!-- Background: rocket launch -->
-  <div style="position:absolute;inset:0;z-index:0;">
+  <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;">
     <img src="brand/img/nasa-dCgbRAQmTQA-unsplash.jpg"
          alt=""
+         role="presentation"
          style="width:100%;height:100%;object-fit:cover;object-position:center 30%;" />
-    <!-- Multi-layer overlay -->
     <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(41,40,62,0.75) 0%, rgba(41,40,62,0.4) 40%, rgba(41,40,62,0.85) 100%);"></div>
     <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 80%, rgba(232,156,46,0.18) 0%, transparent 70%);"></div>
   </div>
 
-  <div style="position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:140px 24px 100px;text-align:center;">
+  <div id="main-content" class="hero-content" style="position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:140px 24px 100px;text-align:center;">
 
     <!-- Year badge -->
     <div style="display:inline-flex;align-items:center;gap:12px;margin-bottom:32px;">
@@ -424,9 +470,9 @@
     </script>
 
     <!-- Scroll cue -->
-    <div style="margin-top:40px;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0.5;">
+    <div aria-hidden="true" style="margin-top:40px;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0.5;">
       <span style="font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;">Scroll</span>
-      <svg width="16" height="24" viewBox="0 0 16 24" fill="none"><rect x="6" y="6" width="4" height="6" rx="2" fill="#E89C2E"/><rect x="0.5" y="0.5" width="15" height="23" rx="7.5" stroke="#E89C2E" stroke-opacity="0.4"/></svg>
+      <svg width="16" height="24" viewBox="0 0 16 24" fill="none" aria-hidden="true" focusable="false"><rect x="6" y="6" width="4" height="6" rx="2" fill="#E89C2E"/><rect x="0.5" y="0.5" width="15" height="23" rx="7.5" stroke="#E89C2E" stroke-opacity="0.4"/></svg>
     </div>
   </div>
 </section>
@@ -442,12 +488,12 @@
     .tw-cursor { font-family:'Courier Prime',monospace; color:#E89C2E; animation:tw-blink 0.85s step-end infinite; user-select:none; }
   </style>
 
-  <div style="max-width:720px;margin:0 auto;padding:88px 40px 88px 40px;position:relative;">
+  <div class="manifesto-wrap" style="max-width:720px;margin:0 auto;padding:88px 40px 88px 40px;position:relative;">
 
     <!-- Margin rule -->
-    <div style="position:absolute;top:0;bottom:0;left:96px;width:2px;background:rgba(232,156,46,0.22);pointer-events:none;"></div>
+    <div aria-hidden="true" class="manifesto-rule" style="position:absolute;top:0;bottom:0;left:96px;width:2px;background:rgba(232,156,46,0.22);pointer-events:none;"></div>
 
-    <div style="padding-left:72px;">
+    <div class="manifesto-inner" style="padding-left:72px;">
 
       <!-- File header -->
       <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:48px;">
@@ -604,19 +650,19 @@
 <section id="mission" style="background:#29283E;position:relative;overflow:hidden;">
 
   <!-- Background nebula image -->
-  <div style="position:absolute;inset:0;z-index:0;opacity:0.12;">
-    <img src="brand/img/nasa-vltMzn0jqsA-unsplash.jpg" alt="" style="width:100%;height:100%;object-fit:cover;" />
+  <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;opacity:0.12;">
+    <img src="brand/img/nasa-vltMzn0jqsA-unsplash.jpg" alt="" role="presentation" style="width:100%;height:100%;object-fit:cover;" />
   </div>
 
-  <div style="position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:100px 24px;">
+  <div class="mission-pad" style="position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:100px 24px;">
 
     <!-- Section label -->
     <div style="display:flex;align-items:center;gap:16px;margin-bottom:48px;">
       <span class="metric-label">Mission Brief</span>
-      <div style="flex:1;height:1px;background:linear-gradient(90deg,rgba(232,156,46,0.5),transparent);"></div>
+      <div aria-hidden="true" style="flex:1;height:1px;background:linear-gradient(90deg,rgba(232,156,46,0.5),transparent);"></div>
     </div>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;">
+    <div class="mission-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;">
 
       <!-- Left: Mission text -->
       <div>
@@ -684,11 +730,11 @@
 <section id="metaphor" style="background:#FFF5E5;position:relative;overflow:hidden;">
 
   <!-- Decorative corner stamp -->
-  <div style="position:absolute;top:0;right:0;width:200px;height:200px;opacity:0.05;overflow:hidden;">
-    <img src="brand/logo.png" alt="" style="width:200px;height:200px;object-fit:contain;" />
+  <div aria-hidden="true" style="position:absolute;top:0;right:0;width:200px;height:200px;opacity:0.05;overflow:hidden;">
+    <img src="brand/logo.png" alt="" role="presentation" style="width:200px;height:200px;object-fit:contain;" />
   </div>
 
-  <div style="max-width:1280px;margin:0 auto;padding:100px 24px;">
+  <div class="metaphor-inner" style="max-width:1280px;margin:0 auto;padding:100px 24px;">
 
     <!-- Header -->
     <div style="text-align:center;margin-bottom:64px;">
@@ -706,7 +752,7 @@
     </div>
 
     <!-- Three metaphor elements -->
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:80px;">
+    <div class="cards-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:80px;">
 
       <div style="border:1px solid rgba(41,40,62,0.1);padding:36px;background:rgba(41,40,62,0.03);">
         <div style="font-size:2rem;margin-bottom:16px;">🚀</div>
@@ -741,7 +787,7 @@
       <p style="font-size:0.95rem;line-height:1.7;color:#595959;max-width:500px;margin:0 auto;">Not a ranking. A statement about what kind of mission you're on. All three are valid — what matters is that you needed a boost to get there.</p>
     </div>
 
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:80px;">
+    <div class="cards-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:80px;">
 
       <!-- Moon -->
       <div style="border-top:3px solid #E89C2E;padding:36px;background:rgba(232,156,46,0.04);border-left:1px solid rgba(232,156,46,0.15);border-right:1px solid rgba(232,156,46,0.15);border-bottom:1px solid rgba(232,156,46,0.15);">
@@ -799,19 +845,19 @@
   <!-- Subtle glow -->
   <div style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:600px;height:200px;background:radial-gradient(ellipse,rgba(232,156,46,0.06) 0%,transparent 70%);pointer-events:none;"></div>
 
-  <div style="position:relative;max-width:1280px;margin:0 auto;padding:64px 24px 40px;">
+  <div class="footer-inner" style="position:relative;max-width:1280px;margin:0 auto;padding:64px 24px 40px;">
 
-    <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:56px;margin-bottom:56px;align-items:start;">
+    <div class="footer-grid" style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:56px;margin-bottom:56px;align-items:start;">
 
       <!-- Brand -->
       <div>
         <img src="brand/logo.png" alt="Boost Days 2026" style="height:56px;width:auto;margin-bottom:24px;filter:drop-shadow(0 0 20px rgba(232,156,46,0.2));" />
-        <p style="font-size:0.9rem;line-height:1.75;color:rgba(255,245,229,0.5);max-width:300px;margin:0 0 24px;">
+        <p style="font-size:0.9rem;line-height:1.75;color:rgba(255,245,229,0.65);max-width:300px;margin:0 0 24px;">
           Nobody reaches orbit alone. Two days, one crew, one mission — and the runway to launch something neither of you could build alone.
         </p>
         <div style="display:flex;align-items:center;gap:8px;">
-          <div style="width:6px;height:6px;background:#E89C2E;border-radius:50%;animation:tw-blink 1.8s ease-in-out infinite;"></div>
-          <span style="font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,245,229,0.3);">Mission Year 2026</span>
+          <div aria-hidden="true" style="width:6px;height:6px;background:#E89C2E;border-radius:50%;animation:tw-blink 1.8s ease-in-out infinite;"></div>
+          <span style="font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,245,229,0.5);">Mission Year 2026</span>
         </div>
       </div>
 
@@ -832,10 +878,10 @@
         <div style="display:flex;flex-direction:column;gap:14px;">
           <div>
             <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.3rem;line-height:1;color:#FFF5E5;letter-spacing:0.02em;">May 20, 2026</div>
-            <div style="font-family:'Courier Prime',monospace;font-size:0.8rem;color:rgba(255,245,229,0.35);margin-top:4px;">09:00 AM — Liftoff</div>
+            <div style="font-family:'Courier Prime',monospace;font-size:0.8rem;color:rgba(255,245,229,0.55);margin-top:4px;">09:00 AM — Liftoff</div>
           </div>
           <div style="width:32px;height:1px;background:rgba(232,156,46,0.25);"></div>
-          <div style="font-family:'Courier Prime',monospace;font-size:0.82rem;line-height:1.65;color:rgba(255,245,229,0.4);">
+          <div style="font-family:'Courier Prime',monospace;font-size:0.82rem;line-height:1.65;color:rgba(255,245,229,0.55);">
             Pick your mission.<br/>
             Find your crew.<br/>
             We're going anyway.
@@ -849,8 +895,8 @@
     <div style="height:1px;background:linear-gradient(90deg,transparent,rgba(232,156,46,0.2),transparent);margin-bottom:24px;"></div>
 
     <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
-      <span style="font-family:'Courier Prime',monospace;font-size:0.75rem;color:rgba(255,245,229,0.2);">© 2026 e-conomic · Boost Days</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(232,156,46,0.35);">Be Bold · Build Together · Become AI Native</span>
+      <span style="font-family:'Courier Prime',monospace;font-size:0.75rem;color:rgba(255,245,229,0.45);">© 2026 e-conomic · Boost Days</span>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(232,156,46,0.55);">Be Bold · Build Together · Become AI Native</span>
     </div>
 
   </div>
